@@ -1,0 +1,81 @@
+# Autonomous Driving Perception & Control System - Conda Environment
+# Author: Pavan (pavaner2007)
+#
+# To create the environment, run:
+#   conda env create -f environment.yml
+#
+# To activate the environment, run:
+#   conda activate carla_env
+
+name: carla_env
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+  - nvidia
+
+dependencies:
+  # Python version (3.8 required for CARLA 0.9.15 compatibility)
+  - python=3.8
+
+  # Core scientific computing
+  - numpy>=1.24.0
+  - scipy>=1.10.0
+  - pandas>=2.0.0
+  - matplotlib>=3.7.0
+
+  # Jupyter support
+  - ipykernel
+  - ipython
+  - jupyter_client
+  - jupyter_core
+
+  # Build tools
+  - pip
+  - setuptools
+  - wheel
+
+  # pip packages (not available in conda or specific versions needed)
+  - pip:
+      # Deep Learning Framework
+      - torch>=2.4.0
+      - torchvision>=0.19.0
+
+      # Computer Vision
+      - opencv-python>=4.8.0
+      - pillow>=10.0.0
+      - scikit-image>=0.21.0
+
+      # YOLO Object Detection
+      - ultralytics>=8.0.0
+
+      # Lane Detection Dependencies
+      - timm>=0.9.0
+      - efficientnet-pytorch>=0.7.0
+      - pretrainedmodels>=0.7.4
+      - segmentation-models-pytorch>=0.3.0
+
+      # OCR (for speed limit sign recognition)
+      - easyocr>=1.7.0
+
+      # CARLA Simulator Client
+      # Note: CARLA Python API (carla package) may need to be installed
+      # from the CARLA .egg file. See README.md for instructions.
+      # - carla==0.9.15
+
+      # Utilities
+      - tqdm>=4.60.0
+      - pyyaml>=6.0.0
+      - shapely>=2.0.0
+      - huggingface-hub>=0.36.0
+
+      # Image processing
+      - imageio>=2.30.0
+
+# Note: Some packages like CUDA/cuDNN are handled by PyTorch automatically.
+# For GPU support, ensure you have NVIDIA drivers installed.
+#
+# CARLA Installation:
+# 1. Download CARLA 0.9.15 from https://github.com/carla-simulator/carla/releases
+# 2. The CARLA Python API (.egg file) path needs to be set in the code
+# 3. See src/carla_autonomous_driving.py for CARLA_PATH configuration

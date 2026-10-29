@@ -1,0 +1,41 @@
+# CARLA Autonomous Driving Project - Git LFS Configuration
+# 
+# Git Large File Storage (LFS) is used to track large model weight files.
+# Install Git LFS: https://git-lfs.github.com/
+#
+# After cloning, run: git lfs pull
+# To check LFS files: git lfs ls-files
+
+# ==============================================================================
+# Model Weights
+# ==============================================================================
+
+# PyTorch model files
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.pth filter=lfs diff=lfs merge=lfs -text
+
+# ONNX models
+*.onnx filter=lfs diff=lfs merge=lfs -text
+
+# Other model formats
+*.weights filter=lfs diff=lfs merge=lfs -text
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.pb filter=lfs diff=lfs merge=lfs -text
+*.tflite filter=lfs diff=lfs merge=lfs -text
+*.caffemodel filter=lfs diff=lfs merge=lfs -text
+
+# ==============================================================================
+# Large Binary Files (optional - uncomment if needed)
+# ==============================================================================
+
+# Large datasets (if including in repo)
+# *.zip filter=lfs diff=lfs merge=lfs -text
+# *.tar.gz filter=lfs diff=lfs merge=lfs -text
+
+# Video files (if including demos)
+# *.mp4 filter=lfs diff=lfs merge=lfs -text
+# *.avi filter=lfs diff=lfs merge=lfs -text
+
+# Large image files
+# *.png filter=lfs diff=lfs merge=lfs -text
+# *.jpg filter=lfs diff=lfs merge=lfs -text
