@@ -1,6 +1,5 @@
 # Autonomous Driving Perception & Autopilot System
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python: 3.8 | 3.12](https://img.shields.io/badge/Python-3.8%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.4+-ee4c2c.svg)](https://pytorch.org/)
 [![YOLO11](https://img.shields.io/badge/YOLO-11n-00FFFF.svg)](https://github.com/ultralytics/ultralytics)
