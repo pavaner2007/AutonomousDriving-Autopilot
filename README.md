@@ -16,8 +16,8 @@ An end-to-end multi-modal perception, decision-making, and vehicle control syste
 
 ## 📸 Autopilot HUD in Action
 
-| Real Highway Driving (`sample_driving.mp4`) | Dynamic Autonomous Road Simulation |
-|:---:|:---:|
+|              Real Highway Driving (`sample_driving.mp4`)              |             Dynamic Autonomous Road Simulation             |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------: |
 | ![Real Driving Autopilot HUD](docs/real_driving_cars_hud_preview.png) | ![Autopilot HUD Simulator](docs/autopilot_hud_preview.png) |
 
 ---
@@ -31,7 +31,7 @@ This project implements a complete autonomous driving perception and vehicle con
 - 🚗 **Real-Time Object Detection (YOLO11)**: Detects surrounding vehicles, pedestrians, traffic lights, and road signs with real-time distance estimation.
 - 🚦 **HSV Traffic Light State Recognition**: Filters detected traffic light regions in HSV color space to command **STOP** (Red/Yellow) or **GO** (Green).
 - 🛣️ **Lane Detection & Steering**: Extracts lane boundaries, computes lateral offset (deviation from lane center), and calculates steering angles ($\pm 70^\circ$).
-- ⚡ **Adaptive Speed & Collision Avoidance**: 
+- ⚡ **Adaptive Speed & Collision Avoidance**:
   - Dynamic speed capping with turn-rate speed reduction (up to 30% reduction in sharp turns).
   - Proportional deceleration when following vehicles within safe distance ($15\text{ m}$).
   - Immediate emergency stopping for pedestrians ($< 10\text{ m}$) or red lights ($< 20\text{ m}$).
@@ -135,6 +135,7 @@ Run the autonomous autopilot immediately without downloading any large game simu
 ### 1. Installation
 
 Clone or extract the repository and install requirements:
+
 ```powershell
 cd C:\AutonomousDriving
 pip install -r requirements.txt
@@ -143,7 +144,9 @@ pip install -r requirements.txt
 ### 2. Launching
 
 #### Option A: One-Click Menu (Recommended)
+
 Double-click **`run_demo.bat`** and select an option:
+
 ```text
 ================================================================
       AUTONOMOUS DRIVING PERCEPTION & AUTOPILOT SYSTEM
@@ -160,17 +163,20 @@ Choose an option to run:
 #### Option B: Command Line
 
 - **Run on Real Highway Video (included):**
+
   ```powershell
   cd src
   python autonomous_driving_standalone.py --video "..\sample_driving.mp4"
   ```
 
 - **Run Built-in Autonomous Simulator:**
+
   ```powershell
   python autonomous_driving_standalone.py
   ```
 
 - **Run Live on Webcam:**
+
   ```powershell
   python autonomous_driving_standalone.py --camera 0
   ```
@@ -182,12 +188,12 @@ Choose an option to run:
 
 ### 🎮 Keyboard Controls (While Video Window is Active)
 
-| Key | Action |
-|:---:|:---|
-| **`T`** | **Cycle Traffic Light** (Green ➔ Yellow ➔ Red ➔ Green) to observe stopping & starting behavior |
-| **`P`** | **Trigger Pedestrian Crossing** event to test emergency braking |
-| **`Space`** | **Pause / Resume** playback |
-| **`Q`** / **`ESC`** | **Quit** |
+|         Key         | Action                                                                                         |
+| :-----------------: | :--------------------------------------------------------------------------------------------- |
+|       **`T`**       | **Cycle Traffic Light** (Green ➔ Yellow ➔ Red ➔ Green) to observe stopping & starting behavior |
+|       **`P`**       | **Trigger Pedestrian Crossing** event to test emergency braking                                |
+|     **`Space`**     | **Pause / Resume** playback                                                                    |
+| **`Q`** / **`ESC`** | **Quit**                                                                                       |
 
 ---
 
@@ -196,10 +202,12 @@ Choose an option to run:
 To run this system controlling a 3D Tesla vehicle inside the CARLA Unreal Engine environment:
 
 ### 1. Prerequisites
+
 1. **CARLA 0.9.15 Simulator**: Download `CARLA_0.9.15.zip` from [CARLA Releases](https://github.com/carla-simulator/carla/releases/tag/0.9.15) (~16 GB) and extract to `C:\CARLA_0.9.15`.
 2. **Python 3.8**: Required by CARLA's pre-compiled C++ Python API `.egg`.
 
 ### 2. Environment Setup
+
 ```powershell
 conda create -n carla_env python=3.8
 conda activate carla_env
@@ -208,12 +216,15 @@ pip install -r requirements.txt
 ```
 
 ### 3. Configure CARLA Path
+
 Open [`src/carla_autonomous_driving.py`](src/carla_autonomous_driving.py) and update line 49:
+
 ```python
 CARLA_PATH = 'C:/CARLA_0.9.15'
 ```
 
 ### 4. Running the CARLA System
+
 1. **Start CARLA Server:**
    ```powershell
    cd C:\CARLA_0.9.15
@@ -231,25 +242,21 @@ CARLA_PATH = 'C:/CARLA_0.9.15'
 ## 🧠 Perception Models & Performance
 
 ### 1. Object Detection (YOLO11)
+
 Custom-trained and evaluated on multi-class driving datasets. Detects vehicles, pedestrians, traffic lights, and speed signs in real time at **30+ FPS**.
 
-| Metric | Vehicles | Pedestrians | Traffic Lights | Overall mAP@50 |
-|:---|:---:|:---:|:---:|:---:|
-| **Precision** | 94.2% | 91.8% | 89.5% | **92.4%** |
-| **Recall** | 92.6% | 88.4% | 87.1% | **89.8%** |
+| Metric        | Vehicles | Pedestrians | Traffic Lights | Overall mAP@50 |
+| :------------ | :------: | :---------: | :------------: | :------------: |
+| **Precision** |  94.2%   |    91.8%    |     89.5%      |   **92.4%**    |
+| **Recall**    |  92.6%   |    88.4%    |     87.1%      |   **89.8%**    |
 
 ![YOLO Results](docs/yolo_results.png)
 ![YOLO Confusion Matrix](docs/yolo_confusion_matrix.png)
 
 ### 2. Ultra Fast Lane Detection (UFLD)
+
 Uses a ResNet-18 backbone with row-anchor classification (100 horizontal grid cells across 56 row anchors) for ultra-fast, robust boundary detection.
 
 ![UFLD Predictions](docs/ufld_predictions.png)
 
 ---
-
-## 📜 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for full details.
-
-Copyright (c) 2026 **Pavan** ([@pavaner2007](https://github.com/pavaner2007)).
