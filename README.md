@@ -9,8 +9,7 @@
 
 An end-to-end multi-modal perception, decision-making, and vehicle control system for autonomous driving. Featuring real-time **YOLO11** object detection, **HSV traffic light state recognition**, **lane boundary tracking**, **adaptive speed control with emergency braking**, and a **Tesla-style Autopilot HUD**.
 
-**Author:** Pavan ([@pavaner2007](https://github.com/pavaner2007))  
-**License:** MIT
+**Author:** Pavan ([@pavaner2007](https://github.com/pavaner2007))
 
 ---
 
